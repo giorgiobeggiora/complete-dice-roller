@@ -7,7 +7,7 @@ This app uses a custom extended Dice Notation ( https://en.wikipedia.org/wiki/Di
 
 Examples:
 
-- Dungeons & Dragons 3.5 (skill check) = 1d20+6 = roll 1d20 then add 6 to the result
+- Pathfinder (skill check) = 1d20+6 = roll 1d20 then add 6 to the result
 - Dungeons & Dragons 3.5 (pc creation) = 4d6-L = drop the lowest dice then sum the others
 - Dungeons & Dragons 5 (advantage) = 2d20+H+2 = keep the highest dice then add 2 to the result
 - Dungeons & Dragons 5 (disadvantage) = 2d20+L+2 = keep the lower dice then add 2 to the result
