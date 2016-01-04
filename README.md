@@ -14,7 +14,7 @@ Examples:
 - Legend of the Five Rings = 4k3 = 4d10+H3 = roll 4d6 then sum the 3 highest dices
 - Nameless Land = 1d% = roll 1d100
 - Arkham Horror = 2d6+S5 = count successes starting from 5 (the result will be 0, 1 or 2)
-- Vampire, the Masquerade = 10d10+S = count successes starting from 8 (8 is the default value)
+- Vampire, the Masquerade = 10d10+S = count successes starting from 8 (the default value)
 - Fudge = 1dF = the result will be -1, 0 or 1
 - Other = (1d3+3d6)+H+S = roll 1d3 and 3d6, keep only the highest dice, count how many successes ( >= 8 ) i got = zero :)
 
