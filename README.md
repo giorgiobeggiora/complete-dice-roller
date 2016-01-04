@@ -18,7 +18,9 @@ Vampire, the Masquerade = 10d10+S = count successes starting from 8 (8 is the de
 Fudge = 1dF = the result will be -1, 0 or 1  return
 Other = (1d3+3d6)+H+S = roll 1d3 and 3d6, keep only the highest dice, count how many successes ( >= 8 ) i got = zero :)  return
 
-Coming soon:
+Coming soon
 
 - reroll dices
 - exploding dices
+- profiles
+- macros
