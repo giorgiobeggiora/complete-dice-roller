@@ -53,66 +53,67 @@ document.addEventListener("app.Ready", onAppReady, false) ;
 // messages that can help you debug Cordova app initialization issues.
 
 myapp.init = function(){
-	var kb=document.querySelectorAll('.character');
-	for(var i=0;i<kb.length;i++){
-		var c=kb[i];
-		if(!c.disabled)c.addEventListener('touchend',keyboardButton);
-	}
-	document.getElementById('resetButton').addEventListener('touchend',function(){
-		document.getElementById('formula').value='';
-	});
-	document.getElementById('backspaceButton').addEventListener('touchend',function(){
-		keyboardButton('backspace');
-	});
-	document.getElementById('rollButton').addEventListener('touchend',function(){
-		keyboardButton('rollButton');
-	});
-	/*
-	document.getElementById('formula').addEventListener('focus',function(e){
-		e.preventDefault(); e.stopPropagation();
-		window.scrollTo(0,0);
-	});
-	*/
-    var rolls=document.querySelectorAll('#test button');
-    for(var i=0,l=rolls.length;i<l;i++){
-        rolls[i].addEventListener('touchend',function(){
-			document.getElementById('formula').value=this.innerHTML;
+	
+	function calculatorPageListeners(){
+		var kb=document.querySelectorAll('.character');
+		for(var i=0;i<kb.length;i++){
+			var c=kb[i];
+			if(!c.disabled)c.addEventListener('touchend',keyboardButton);
+		}
+		document.getElementById('resetButton').addEventListener('touchend',function(){
+			document.getElementById('formula').value='';
+		});
+		document.getElementById('backspaceButton').addEventListener('touchend',function(){
+			keyboardButton('backspace');
+		});
+		document.getElementById('rollButton').addEventListener('touchend',function(){
 			keyboardButton('rollButton');
 		});
-    }
-	
-	var disable_phone_keyboard=localStorage.getItem('disable_phone_keyboard');
-	if(disable_phone_keyboard==null){
-		disable_phone_keyboard=true;
-		localStorage.setItem('disable_phone_keyboard',1);
-	}else{
-		disable_phone_keyboard=disable_phone_keyboard*1===1;
+		var rolls=document.querySelectorAll('#test button');
+		for(var i=0,l=rolls.length;i<l;i++){
+			rolls[i].addEventListener('touchend',function(){
+				document.getElementById('formula').value=this.innerHTML;
+				keyboardButton('rollButton');
+			});
+		}
+		
+		var disable_phone_keyboard=localStorage.getItem('disable_phone_keyboard');
+		if(disable_phone_keyboard==null){
+			disable_phone_keyboard=true;
+			localStorage.setItem('disable_phone_keyboard',1);
+		}else{
+			disable_phone_keyboard=disable_phone_keyboard*1===1;
+		}
+		document.getElementById('formula').readOnly = disable_phone_keyboard;
+		
 	}
-	document.getElementById('formula').readOnly = disable_phone_keyboard;
+	
+	function optionsPageListeners(){
+		
+		var disable_phone_keyboard=localStorage.getItem('disable_phone_keyboard');
+		if(disable_phone_keyboard==null){
+			disable_phone_keyboard=true;
+			localStorage.setItem('disable_phone_keyboard',1);
+		}else{
+			disable_phone_keyboard=disable_phone_keyboard*1===1;
+		}
+		
+		if(disable_phone_keyboard)document.getElementById('disable_phone_keyboard').className+=' active';
+
+	}
 	
 	window.addEventListener('push',function(){
 		if(document.getElementById('page-options')){
-			var disable_phone_keyboard=localStorage.getItem('disable_phone_keyboard');
-			if(disable_phone_keyboard==null){
-				disable_phone_keyboard=true;
-				localStorage.setItem('disable_phone_keyboard',1);
-			}else{
-				disable_phone_keyboard=disable_phone_keyboard*1===1;
-			}
-			if(disable_phone_keyboard)document.getElementById('disable_phone_keyboard').className+=' active';
+			
+			optionsPageListeners();
+			
 		}else if(document.getElementById('page-calculator')){
-			var disable_phone_keyboard=localStorage.getItem('disable_phone_keyboard');
-			if(disable_phone_keyboard==null){
-				disable_phone_keyboard=true;
-				localStorage.setItem('disable_phone_keyboard',1);
-			}else{
-				disable_phone_keyboard=disable_phone_keyboard*1===1;
-			}
-			document.getElementById('formula').readOnly = disable_phone_keyboard;
+			
+			calculatorPageListeners();
 
 		}
-		
 	});
+	
 	
 	document.body.addEventListener('toggle',function(event){
 		var target=event.target;
@@ -123,6 +124,7 @@ myapp.init = function(){
 		}
 	});
 	
+	PUSH({url:'calculator.html'});
 }
 
 function keyboardButton(){
