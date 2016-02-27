@@ -24,13 +24,14 @@
   font-family:'IcoMoon Free';
   src: url('../fonts/IcoMoon-Free.ttf');
 }
-button:focus,a:focus{
+
+.keyboard button:focus,a:focus{
 	outline: none;
 }
-button:disabled{
+.keyboard button:disabled{
 	color:rgba(0,0,0,0.5);
 }
-button:disabled span{
+.keyboard button:disabled span{
 	display:block;
 	width:inherit;
 	height:inherit;

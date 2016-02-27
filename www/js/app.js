@@ -81,11 +81,47 @@ myapp.init = function(){
 		});
     }
 	
-	document.getElementById('disable_phone_keyboard').addEventListener('change',function(ev){
-		document.getElementById('formula').readOnly = this.checked;
-		console.log(this.checked,document.getElementById('formula').readonly)
+	var disable_phone_keyboard=localStorage.getItem('disable_phone_keyboard');
+	if(disable_phone_keyboard==null){
+		disable_phone_keyboard=true;
+		localStorage.setItem('disable_phone_keyboard',1);
+	}else{
+		disable_phone_keyboard=disable_phone_keyboard*1===1;
+	}
+	document.getElementById('formula').readOnly = disable_phone_keyboard;
+	
+	window.addEventListener('push',function(){
+		if(document.getElementById('page-options')){
+			var disable_phone_keyboard=localStorage.getItem('disable_phone_keyboard');
+			if(disable_phone_keyboard==null){
+				disable_phone_keyboard=true;
+				localStorage.setItem('disable_phone_keyboard',1);
+			}else{
+				disable_phone_keyboard=disable_phone_keyboard*1===1;
+			}
+			if(disable_phone_keyboard)document.getElementById('disable_phone_keyboard').className+=' active';
+		}else if(document.getElementById('page-calculator')){
+			var disable_phone_keyboard=localStorage.getItem('disable_phone_keyboard');
+			if(disable_phone_keyboard==null){
+				disable_phone_keyboard=true;
+				localStorage.setItem('disable_phone_keyboard',1);
+			}else{
+				disable_phone_keyboard=disable_phone_keyboard*1===1;
+			}
+			document.getElementById('formula').readOnly = disable_phone_keyboard;
+
+		}
+		
 	});
-	document.getElementById('formula').readOnly = true;
+	
+	document.body.addEventListener('toggle',function(event){
+		var target=event.target;
+		switch(target.id){
+			case'disable_phone_keyboard':
+				localStorage.setItem('disable_phone_keyboard',event.detail.isActive*1);
+			break;
+		}
+	});
 	
 }
 
