@@ -1,72 +1,3 @@
-<!doctype html><html><head>
-<meta charset="utf-8">
-<title></title>
-<link rel="stylesheet" href="">
-<style>
-
-
-
-</style>
-</head><body>
-<table border="1" cellpadding="10" cellspacing="0">
-
-<tr class="roll"><td>
-3k4
-</td></tr>
-
-<tr class="roll"><td>
-3k4!
-</td></tr>
-
-<tr class="roll"><td>
-3k4!5
-</td></tr>
-
-<tr class="roll"><td>
-1dF
-</td></tr>
-
-<tr class="roll"><td>
-(4d6)-L+(4d20+4d6)+H2-3000+(23d12+3d4)-L11
-</td></tr>
-
-<tr class="roll"><td>
-(1+(2+(3*4)))*(101-1)
-</td></tr>
-
-<tr class="roll"><td>
-(1+(2+(3*4)))
-</td></tr>
-
-<tr class="roll"><td>
-1d6+100+1d2
-</td></tr>
-
-<tr class="roll"><td>
-4d6-L
-</td></tr>
-
-<tr class="roll"><td>
-4d6+H
-</td></tr>
-
-<tr class="roll"><td>
-10d10+S
-</td></tr>
-
-<tr class="roll"><td>
-3k4!?
-</td></tr>
-
-<tr class="roll"><td>
-3k4!10?1
-</td></tr>
-
-</table>
-
-<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script-->
-<script src=""></script>
-<script>
 
 var indent={
 	current:0,
@@ -127,7 +58,9 @@ function keep_calc(f,m){
 	f=joinArray(f.split(re),results);
 	return f;
 }
-
+function d(s){
+	return 1+Math.floor(Math.random()*s);
+}
 function dice_check(f){
 	var re=/(\d+)d(\d+|F)/g;
 	return f.match(re);
@@ -143,9 +76,9 @@ function dice_calc(f,m){
 		if(q!=0&&s!=0){
 			var r=[];
 			for(var i=0;i<q;i++){
-				r.push(1+Math.floor(Math.random()*s)-fudge);
+				r.push(d(s)-fudge);
 			}
-			results.push('['+r.join()+']');
+			results.push('['+r.join()+']d'+digits[1]);
 		};
 	};
 	f=joinArray(f.split(re),results);
@@ -153,22 +86,22 @@ function dice_calc(f,m){
 }
 
 function results_check(f){
-	var re=/\[[\d,-]*\]/g;
+	var re=/\[[\d,\-]*\]/g;
 	return f.match(re);
 }
 function results_calc(f,m){
-	var re=/\[[\d,-]*\]/g;
+	var re=/\[[\d,\-]*\]/g;
 	var results=[];
 	for(var g=0;g<m.length;g++){
-		var digits=m[g].match(/-{0,1}\d+/g);
+		var digits=m[g].split(']')[0].match(/-{0,1}\d+/g);
 		var sum=0;
 		for(var i=0,l=digits.length;i<l;i++){
 			sum+=digits[i]*1;
 		}
 		results.push(sum);
 	}
-	f=joinArray(f.split(re),results);
-	return f;
+	newFormula=joinArray(f.split(re),results);
+	return newFormula;
 }
 
 function doTheMath(f){
@@ -195,7 +128,7 @@ function parentheses_calc(f,m){
 	var r=[];
 	for(var i=0,l=m.length;i<l;i++){
 		var p=m[i];
-		p=roll_without_parentheses(p);
+		p=roll_unit_1(p);
 		r.push(p);
 	}
 	f=joinArray(f.split(re),r);
@@ -223,7 +156,8 @@ function hilo_calc(f,m){
 		}else{
 			var sign='+';
 		}			
-		var rolled=m[i].split(/[HL]/)[0].match(/\d+/g);
+		var rolled=m[i].split(']')[0].match(/\d+/g);
+		var sides=m[i].split(']')[1].split(/[\+\-]/)[0];
 		var q=m[i].split(letter)[1];
 		q=q==''?1:(q*1);
 		q=Math.min(q,rolled.length);
@@ -276,9 +210,9 @@ function sufa_calc(f,m){
 		}else{
 			var sign='+';
 		}			
-		var v=m[i].split(letter)[1];
+		var v=m[i].split(/[\+\-][SF]/)[1];
 		v=v==''?8:(v*1);
-		var rolled=m[i].split(/[SF]/)[0].match(/\d+/g);
+		var rolled=m[i].split(']')[0].match(/\d+/g),l=rolled.length;
 		var count=0;
 		if(letter=='S'){
 			if(sign=='+'){
@@ -308,7 +242,79 @@ function sufa_calc(f,m){
 	return f;
 }
 
-function roll_without_parentheses(f){
+function all_regexp(){
+	var re=/\[([\d,\-]+)\]d(\d+|F)(([+\-][HLRSF]\d*)*)/g;
+	return re;
+}
+function all_calc(f,m){
+	var rolls=m[1].split(',');
+	var sides=m[2]*1;
+	var re=/([+-])([HLRSF])(\d*)/g;
+	var actions=[],act;
+	while( (act = re.exec(m[3])) !== null ){
+		if (act.index === re.lastIndex) {
+			re.lastIndex++;
+		};
+		actions.push(act);
+	};
+	if(actions.length){
+		//check reroll
+		var l=actions.length;
+		var reroll_found=false;
+		for(var i=0;i<l;i++){
+			var action=actions[i],
+				action_sign=action[1],
+				action_type=action[2],
+				action_value=action[3]?(action[3]*1):(action_sign==='-'?1:10)
+			;
+			if(action_type==='R'){
+				if(!reroll_found){
+					reroll_found=true;
+					var actions_reroll_indexes = [];
+					var actions_reroll_drop = [];
+					var actions_reroll_keep = [];
+				}
+				actions_reroll_indexes.push(i);
+				if(action_sign==='-'){
+					actions_reroll_drop.push(action_value);
+				}else{
+					actions_reroll_keep.push(action_value);
+				}
+				var j=rolls.length;
+				while(j--){
+					rolls[j]*=1;
+					while(actions_reroll_drop.indexOf(rolls[j])!=-1){
+						var newRoll=d(sides);
+						rolls[j]=newRoll;
+					}
+					var lastRoll=rolls[j];
+					var sumRoll=lastRoll;
+					while(actions_reroll_keep.indexOf(lastRoll)!=-1){
+						lastRoll=d(sides);
+						sumRoll+=lastRoll;
+					}
+					rolls[j]=sumRoll;
+				}
+			}
+		};
+		if(reroll_found){
+			var i=actions_reroll_indexes.length;
+			while(i--){
+				actions.splice(actions_reroll_indexes[i],1);
+			};
+		}
+	}
+	
+	var result='['+rolls.join()+']',l=actions.length;
+	for(var i=0;i<actions.length;i++){
+		result+=actions[i][0];
+	}
+	
+	var resplit=/\[[\d,\-]+\]d(?:\d|F)+(?:[+\-][HLRSF]\d*)*/;
+	f=f.replace(resplit,result);
+	return f;
+}
+function roll_unit_1(f){
 	// -------------------------------------------------------------
 	indent.add();
 	console.log(indent.get()+'keep ( -->',f);
@@ -335,6 +341,28 @@ function roll_without_parentheses(f){
 	indent.del();
 	// -------------------------------------------------------------
 	indent.add();
+	console.log(indent.get()+'all  ( -->',f);
+	
+		indent.add();
+		console.log(indent.get()+'all ! -->',f);
+		var re = /\[([\d,\-]+)\]d(\d+|F)(([+\-][HLRSF]\d*)*)/g; 
+		var str=f;
+		var m;
+		 
+		while ((m = re.exec(str)) !== null) {
+			if (m.index === re.lastIndex) {
+				re.lastIndex++;
+			}
+		   console.log(f,m)
+			f=all_calc(f,m);
+		}
+		
+		indent.del();
+	
+	console.log(indent.get()+'all ) -->',f);
+	indent.del();
+	/*
+	indent.add();
 	console.log(indent.get()+'merg ( -->',f);
 	f=f.replace(/\]\+\[/g,',');
 	if(f.match(/^\(\[[\d,-]*\]\)$/)){
@@ -343,6 +371,11 @@ function roll_without_parentheses(f){
 	}
 	console.log(indent.get()+'merg ) -->',f);
 	indent.del();
+	*/
+	// -------------------------------------------------------------
+	return f;
+}
+function roll_unit_2(f){
 	// -------------------------------------------------------------
 	indent.add();
 	console.log(indent.get()+'hilo  ( -->',f);
@@ -370,28 +403,54 @@ function roll_without_parentheses(f){
 	// -------------------------------------------------------------
 	return f;
 }
-
 function roll(f){
 	f=trimRoll(f);
-	var re=/^[*\\\(\)+-\d\.\[\],]*$/g;
-	var debug=0;
-	while(!re.test(f)){
+	F=f;
+	var debug_count=0;
+	var re1=/[R]/;
+	var re2=/\d+[dk](\d+|F)/g;
+	while(re1.test(f)||re2.test(f)){
 		indent.add();
 		console.log(indent.get()+'pare ( -->',f);
 		var m=parentheses_check(f);
-		if(m){
+		/*if(m){
 			indent.add();
 			console.log(indent.get()+'pare ! -->',f);
 			f=parentheses_calc(f,m);
 			indent.del();
-		}else{
-			f=roll_without_parentheses(f);
-		}
+		}else{*/
+			f=roll_unit_1(f);
+		/*}*/
 		console.log(indent.get()+'pare ) -->',f);
 		indent.del();
-		debug++;
-		if(debug==5){
+		debug_count++;
+		if(debug_count==5){
 			console.error('BREAK DEBUG');
+			break;
+		}
+	}
+	
+	var result_with_rolls=f;
+	
+	var debug_count=0;
+	var re1=/[LHSF]/;
+	while(re1.test(f)){
+		indent.add();
+		console.log(indent.get()+'pare 2 ( -->',f);
+		var m=parentheses_check(f);
+		/*if(m){
+			indent.add();
+			console.log(indent.get()+'pare ! -->',f);
+			f=parentheses_calc(f,m);
+			indent.del();
+		}else{*/
+			f=roll_unit_2(f);
+		/*}*/
+		console.log(indent.get()+'pare 2 ) -->',f);
+		indent.del();
+		debug_count++;
+		if(debug_count==5){
+			console.error('BREAK DEBUG 2');
 			break;
 		}
 	}
@@ -409,20 +468,5 @@ function roll(f){
 	indent.del();
 	// -------------------------------------------------------------
 	var result=doTheMath(f);
-	return result; 
+	return [result,result_with_rolls];
 }
-
-var rolls=document.querySelectorAll('.roll');
-for(var i=0,l=rolls.length;i<l;i++){
-	console.log('------------------------------------------------------------------------------------');
-	var tr=rolls[i];
-	var f=tr.getElementsByTagName('td')[0].innerHTML;
-//	var td=document.createElement('td');
-//	td.innerHTML=roll(f);
-//	tr.appendChild(td);
-	console.log(f);
-	console.log(roll(f));
-}
-
-</script>
-</body></html>

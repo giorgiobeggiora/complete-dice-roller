@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "jsapp/template-blank-cordova-project-lite/sample.zip",
       "projectGuid": "955de004-cf80-427d-85a4-3d5e0cceea91",
-      "lastModifiedDate": 1451925153785,
+      "lastModifiedDate": 1456484571802,
       "creationDate": 1451923656421
     },
     "XDK-app-designer": "false",
@@ -50,7 +50,8 @@
         "gitref": "",
         "name": "Device",
         "description": "Cordova Device Plugin",
-        "checksum": "1eae5d64"
+        "checksum": "1eae5d64",
+        "cordovaVersion": ">=3.0"
       },
       {
         "id": "cordova-plugin-splashscreen",
@@ -67,7 +68,59 @@
         "gitref": "",
         "name": "Splashscreen",
         "description": "Cordova Splashscreen Plugin",
-        "checksum": "170efb68"
+        "checksum": "170efb68",
+        "cordovaVersion": ">=3.0"
+      },
+      {
+        "id": "cordova-plugin-admobpro",
+        "name": "AdMob Plugin Pro",
+        "version": "2.11.1",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-admobpro",
+        "gitref": "",
+        "paramvals": {},
+        "sourceLocation": "plugins/cordova-plugin-admobpro",
+        "selectedState": "Included",
+        "checksum": "9798e74e",
+        "dependsOn": [
+          "cordova-plugin-extension"
+        ],
+        "topLevel": true,
+        "cordovaVersion": ">=3.0",
+        "author": "Liming Xie",
+        "permissions": {
+          "android:name": [
+            "android.permission.INTERNET",
+            "android.permission.ACCESS_NETWORK_STATE"
+          ]
+        },
+        "description": "Ultimate Cordova Plugin for Google AdMob and DFP to monetize hybrid apps. Show mobile Ad with single line of JavaScript. Compatible with Cordova CLI, PhoneGap Build, Intel XDK/Crosswalk, Google ChromeApp, Ionic, Meteor, etc.",
+        "data": {},
+        "dependedBy": [],
+        "custom": "true"
+      },
+      {
+        "id": "cordova-plugin-extension",
+        "name": "Cordova Plugin Extension",
+        "version": "1.2.9",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-extension",
+        "gitref": "",
+        "paramvals": {},
+        "sourceLocation": "plugins/cordova-plugin-extension",
+        "selectedState": "Included",
+        "checksum": "3b656af3",
+        "dependsOn": [],
+        "topLevel": false,
+        "cordovaVersion": ">=3.0",
+        "author": "Liming Xie",
+        "permissions": {},
+        "description": "Common interface and reusable code, as dependency of other plugins",
+        "data": {},
+        "dependedBy": [
+          "cordova-plugin-admobpro"
+        ],
+        "custom": "true"
       }
     ],
     "buildConfigurations": {

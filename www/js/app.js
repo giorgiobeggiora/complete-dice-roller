@@ -29,7 +29,10 @@
 // You can add other code to it or add additional functions that are triggered
 // by the same event or other events.
 
+var myapp={};
+
 function onAppReady() {
+	myapp.init();
     if( navigator.splashscreen && navigator.splashscreen.hide ) {   // Cordova API detected
         navigator.splashscreen.hide() ;
     }
@@ -48,3 +51,72 @@ document.addEventListener("app.Ready", onAppReady, false) ;
 
 // NOTE: change "dev.LOG" in "init-dev.js" to "true" to enable some console.log
 // messages that can help you debug Cordova app initialization issues.
+
+myapp.init = function(){
+	var kb=document.querySelectorAll('.character');
+	for(var i=0;i<kb.length;i++){
+		var c=kb[i];
+		if(!c.disabled)c.addEventListener('touchend',keyboardButton);
+	}
+	document.getElementById('resetButton').addEventListener('touchend',function(){
+		document.getElementById('formula').value='';
+	});
+	document.getElementById('backspaceButton').addEventListener('touchend',function(){
+		keyboardButton('backspace');
+	});
+	document.getElementById('rollButton').addEventListener('touchend',function(){
+		keyboardButton('rollButton');
+	});
+	/*
+	document.getElementById('formula').addEventListener('focus',function(e){
+		e.preventDefault(); e.stopPropagation();
+		window.scrollTo(0,0);
+	});
+	*/
+    var rolls=document.querySelectorAll('#test button');
+    for(var i=0,l=rolls.length;i<l;i++){
+        rolls[i].addEventListener('touchend',function(){
+			document.getElementById('formula').value=this.innerHTML;
+			keyboardButton('rollButton');
+		});
+    }
+	
+	document.getElementById('disable_phone_keyboard').addEventListener('change',function(ev){
+		document.getElementById('formula').readOnly = this.checked;
+		console.log(this.checked,document.getElementById('formula').readonly)
+	});
+	document.getElementById('formula').readOnly = true;
+	
+}
+
+function keyboardButton(){
+	var el=document.getElementById('formula');
+	var val=el.value;
+	var sel_start=el.selectionStart;
+	var sel_end=el.selectionEnd;
+	var key=typeof arguments[0]=='string'?arguments[0]:this.innerHTML;
+	if(key=='backspace'){
+		if(sel_start==sel_end){
+			el.value=val.substring(0,sel_start-1)+val.substring(sel_end);
+			el.selectionStart=sel_start-1;
+			el.selectionEnd=sel_start-1;
+		}else{
+			el.value=val.substring(0,sel_start)+val.substring(sel_end);
+			el.selectionStart=sel_start;
+			el.selectionEnd=sel_start;
+		}
+	}else if(key=='rollButton'){
+		var f=el.value;
+		console.log('---------------------------------------------------------------');
+		var r=roll(f);
+		document.getElementById('result').innerHTML=r[0]+' = '+r[1];
+		console.log(f);
+		console.log(r);
+	}else{
+		var key_length=key.length;
+		el.value=val.substring(0,sel_start)+key+val.substring(sel_end);
+		el.selectionStart=sel_start+key_length;
+		el.selectionEnd=sel_start+key_length;
+	}
+	el.focus();
+}

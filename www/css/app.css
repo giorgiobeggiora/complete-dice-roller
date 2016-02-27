@@ -1,0 +1,118 @@
+.keyboard{
+	text-align:center;
+	font-size:0;
+}
+.hidden{
+	visibility:hidden;
+}
+.keyboard button{
+	display:inline-block;
+	width:18vw;
+	height:18vw;
+	font-size:5vw;
+	border:0;
+}
+.formula{
+	font-family:Courier New;
+	margin-bottom:0 !important;
+}
+.result{
+	min-height:21px;
+}
+
+@font-face {
+  font-family:'IcoMoon Free';
+  src: url('../fonts/IcoMoon-Free.ttf');
+}
+button:focus,a:focus{
+	outline: none;
+}
+button:disabled{
+	color:rgba(0,0,0,0.5);
+}
+button:disabled span{
+	display:block;
+	width:inherit;
+	height:inherit;
+	text-align:center;
+	position:absolute;
+	font-size:3vw !important;
+	line-height:1em;
+}
+
+.rollButton .icon{
+	font-size:0.8em;
+	background-color:#080;
+	color:#fff;
+	border-radius:50%;
+	padding:2vw;
+}
+.rollButton .icon:before {
+	font-family:'IcoMoon Free';
+	content: "\e915";
+}
+.resetButton .icon{
+	font-size:0.8em;
+	background-color:#f00;
+	color:#fff;
+	border-radius:50%;
+	padding:2vw;
+}
+.resetButton .icon:before{
+	font-family:'IcoMoon Free';
+	content: "\ea0f";
+}
+.backspaceButton .icon{
+	font-size:0.8em;
+	background-color:#f00;
+	color:#fff;
+	border-radius:50%;
+	padding:2vw;
+}
+.backspaceButton .icon:before{
+	font-family:'IcoMoon Free';
+	content: "\ea38";
+}
+
+/*
+.diceNotation{
+	background-color:#888;
+}
+.typeNotation{
+	background-color:#aaa;
+}
+.mathNotation{
+	background-color:#bbb;
+}
+.numbNotation{
+	background-color:#ccc;
+}
+.cancNotation{
+	background-color:#800;
+	color:#fff;
+}
+*/
+.diceNotation{
+	color:#936;
+}
+.typeNotation{
+	color:#f90;
+}
+.mathNotation{
+	color:#06c;
+}
+.numbNotation{
+	color:#000;
+}
+.cancNotation{
+	/*color:#f00;*/
+}
+
+.rollButton,
+.diceNotation,
+.typeNotation,
+.mathNotation,
+.numbNotation,
+.cancNotation{
+	background-color:#fff !important;
+}
