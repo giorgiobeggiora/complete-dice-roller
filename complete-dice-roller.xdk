@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "jsapp/template-blank-cordova-project-lite/sample.zip",
       "projectGuid": "955de004-cf80-427d-85a4-3d5e0cceea91",
-      "lastModifiedDate": 1456484571802,
+      "lastModifiedDate": 1456711378766,
       "creationDate": 1451923656421
     },
     "XDK-app-designer": "false",
@@ -69,7 +69,7 @@
         "name": "Splashscreen",
         "description": "Cordova Splashscreen Plugin",
         "checksum": "170efb68",
-        "cordovaVersion": ">=3.0"
+        "cordovaVersion": ">=3.1.0"
       },
       {
         "id": "cordova-plugin-admobpro",
@@ -121,6 +121,25 @@
           "cordova-plugin-admobpro"
         ],
         "custom": "true"
+      },
+      {
+        "id": "cordova-plugin-inappbrowser",
+        "name": "InAppBrowser",
+        "version": "1.1.0",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-inappbrowser",
+        "gitref": "",
+        "paramvals": {},
+        "sourceLocation": "plugins/cordova-plugin-inappbrowser",
+        "selectedState": "Included",
+        "checksum": "20096ffc",
+        "dependsOn": [],
+        "topLevel": true,
+        "cordovaVersion": ">=3.1.0",
+        "permissions": {},
+        "description": "Cordova InAppBrowser Plugin",
+        "data": {},
+        "dependedBy": []
       }
     ],
     "buildConfigurations": {
@@ -131,11 +150,12 @@
         "preferences_": {
           "android-minSdkVersion": "14",
           "android-targetSdkVersion": "19",
-          "android-installLocation": "auto"
+          "android-installLocation": "auto",
+          "Orientation": "portrait"
         },
         "isActive_": true,
-        "appName_": "complete-dice-roller",
-        "appID_": "xdk.intel.cordova.template.lite",
+        "appName_": "Complete dice roller",
+        "appID_": "it.effettoapp.completediceroller",
         "appAccess_": {
           "mode": "legacy",
           "network": [
@@ -150,9 +170,9 @@
         "excludedLibraries_": "",
         "cordovaCLIVersion_": "5.1.1",
         "crosswalkVersion_": "15",
-        "appVersion_": "0.0.1",
-        "appDescription_": "Universal init code for Intel XDK and Cordova device ready detection, as well as within browser.",
-        "appAuthor_": "Intel XDK",
+        "appVersion_": "0.1.0",
+        "appDescription_": "Dice roller with extended features",
+        "appAuthor_": "Artigiani del Web",
         "appVersionCode_": "1"
       },
       "Android": {
@@ -162,11 +182,12 @@
         "preferences_": {
           "android-minSdkVersion": "14",
           "android-targetSdkVersion": "19",
-          "android-installLocation": "auto"
+          "android-installLocation": "auto",
+          "Orientation": "portrait"
         },
         "isActive_": true,
-        "appName_": "complete-dice-roller",
-        "appID_": "xdk.intel.cordova.template.lite",
+        "appName_": "Complete dice roller",
+        "appID_": "it.effettoapp.completediceroller",
         "appAccess_": {
           "mode": "legacy",
           "network": [
@@ -175,15 +196,97 @@
           "intents": [],
           "navigation": []
         },
-        "icons_": [],
-        "splashes_": [],
+        "icons_": [
+          {
+            "relPath": "images/icons/36.png",
+            "density": "ldpi",
+            "height": 36,
+            "width": 36
+          },
+          {
+            "relPath": "images/icons/48.png",
+            "density": "mdpi",
+            "height": 48,
+            "width": 48
+          },
+          {
+            "relPath": "images/icons/72.png",
+            "density": "hdpi",
+            "height": 72,
+            "width": 72
+          },
+          {
+            "relPath": "images/icons/96.png",
+            "density": "xhdpi",
+            "height": 96,
+            "width": 96
+          }
+        ],
+        "splashes_": [
+          {
+            "relPath": "images/splashscreen/320x426.9.png",
+            "density": "ldpi",
+            "height": 426,
+            "width": 320,
+            "orientation": "portrait"
+          },
+          {
+            "relPath": "images/splashscreen/320x470.9.png",
+            "density": "mdpi",
+            "height": 470,
+            "width": 320,
+            "orientation": "portrait"
+          },
+          {
+            "relPath": "images/splashscreen/480x640.9.png",
+            "density": "hdpi",
+            "height": 640,
+            "width": 480,
+            "orientation": "portrait"
+          },
+          {
+            "relPath": "images/splashscreen/720x960.9.png",
+            "density": "xhdpi",
+            "height": 960,
+            "width": 720,
+            "orientation": "portrait"
+          },
+          {
+            "relPath": "images/splashscreen/960x720.9.png",
+            "density": "xhdpi",
+            "height": 720,
+            "width": 960,
+            "orientation": "landscape"
+          },
+          {
+            "relPath": "images/splashscreen/640x480.9.png",
+            "density": "hdpi",
+            "height": 480,
+            "width": 640,
+            "orientation": "landscape"
+          },
+          {
+            "relPath": "images/splashscreen/470x320.9.png",
+            "density": "mdpi",
+            "height": 320,
+            "width": 470,
+            "orientation": "landscape"
+          },
+          {
+            "relPath": "images/splashscreen/426x320.9.png",
+            "density": "ldpi",
+            "height": 320,
+            "width": 426,
+            "orientation": "landscape"
+          }
+        ],
         "addlPermissions_": "",
         "excludedLibraries_": "",
         "cordovaCLIVersion_": "5.1.1",
         "crosswalkVersion_": "14",
-        "appVersion_": "0.0.1",
-        "appDescription_": "Universal init code for Intel XDK and Cordova device ready detection, as well as within browser.",
-        "appAuthor_": "Intel XDK",
+        "appVersion_": "0.1.0",
+        "appDescription_": "Dice roller with extended features",
+        "appAuthor_": "Artigiani del Web",
         "appVersionCode_": "1"
       },
       "iOS": {

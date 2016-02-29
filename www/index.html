@@ -28,8 +28,101 @@
 
 <body>
     
-	<header class="bar bar-nav"></header>
-	<div id="content" class="content"></div>
+	<header class="bar bar-nav">
+		<a class="icon icon-bars pull-right" href="menu.html"></a>
+		<h1 class="title" id="page-calculator">Complete Dice Roller</h1>
+	</header>
+	
+	<div id="content" class="content">
+		
+		<form class="content-padded" action="javascript:rollButton();">
+			<input type="text" id="formula" class="formula" autocomplete="off"><br><!-- value="(1d3/2)+1d6" -->
+			<div class="content-padded"><div id="result" class="result">&nbsp;</div></div>
+			<div id="keyboard" class="keyboard">
+				
+				<button type="button" class="character mathNotation">(</button>
+				<button type="button" class="character numbNotation">7</button>
+				<button type="button" class="character numbNotation">8</button>
+				<button type="button" class="character numbNotation">9</button>
+				<button type="button" class="character mathNotation">/</button>
+				
+				<button type="button" class="character mathNotation">)</button>
+				<button type="button" class="character numbNotation">4</button>
+				<button type="button" class="character numbNotation">5</button>
+				<button type="button" class="character numbNotation">6</button>
+				<button type="button" class="character mathNotation">*</button>
+				
+				<button type="button" class="character mathNotation">.</button>
+				<button type="button" class="character numbNotation">1</button>
+				<button type="button" class="character numbNotation">2</button>
+				<button type="button" class="character numbNotation">3</button>
+				<button type="button" class="character mathNotation">-</button>
+				
+				<button type="button" class="character diceNotation" disabled>{<span>disabled</span></button>
+				<button type="button" class="character numbNotation">0</button>
+				<button type="button" class="character typeNotation">d</button>
+				<button type="button" class="character typeNotation">k</button>
+				<button type="button" class="character mathNotation">+</button>
+				
+				<button type="button" class="character diceNotation" disabled>}<span>disabled</span></button>
+				<button type="button" class="character diceNotation">H</button>
+				<button type="button" class="character diceNotation">L</button>
+				<button type="button" class="character diceNotation">R</button>
+				<button type="button" class="action rollButton" id="rollButton"><span class="icon"></span></button>
+				
+				<button type="button" class="character diceNotation" disabled>,<span>disabled</span></button>
+				<button type="button" class="character diceNotation">S</button>
+				<button type="button" class="character diceNotation">F</button>
+				<button type="button" class="action cancNotation resetButton" id="resetButton"><span class="icon"></span></button>
+				<button type="button" class="action cancNotation backspaceButton" id="backspaceButton"><span class="icon"></span></button>
+				
+			</div>
+			
+		</form>
+		
+		<div id="test" style="display:none;">
+			<div>
+				<button type="button">3k4</button>
+			</div>
+			<div>
+				<button type="button">3k4+R10</button>
+			</div>
+			<div>
+				<button type="button">3k4-R1</button>
+			</div>
+			<div>
+				<button type="button">20k4-R{1,2,3}</button>
+			</div>
+			<div>
+				<button type="button">1dF</button>
+			</div>
+			<div>
+				<button type="button">(4d6)-L+(4d20+4d6)+H2-3000+(23d12+3d4)-L11</button>
+			</div>
+			<div>
+				<button type="button">(1+(2+(3*4)))*(101-1)</button>
+			</div>
+			<div>
+				<button type="button">(1+(2+(3*4)))</button>
+			</div>
+			<div>
+				<button type="button">1d6+100+1d2</button>
+			</div>
+			<div>
+				<button type="button">4d6-L</button>
+			</div>
+			<div>
+				<button type="button">4d6+H</button>
+			</div>
+			<div>
+				<button type="button">2d10</button>
+			</div>
+			<div>
+				<button type="button">2d10+S</button>
+			</div>
+		</div>
+	
+	</div>
 	
 </body>
 </html>

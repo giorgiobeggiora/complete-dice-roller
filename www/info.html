@@ -27,15 +27,54 @@
 	<div id="content" class="content">
 		
 		<div class="content-padded">
+			
 			<h4>Credits</h4>
 			<p>
-				<a href="http://www.mephit.it" target="_system" data-ignore="push">www.mephit.it</a><br>
-				<a href="http://www.artigianidelweb.com" target="_system" data-ignore="push">www.artigianidelweb.com</a><br>
+				<a href="javascript:;" data-ignore="push" onclick="cordova.InAppBrowser.open('http://www.mephit.it','_system');">www.mephit.it</a><br>
+				<a href="javascript:;" data-ignore="push" onclick="cordova.InAppBrowser.open('http://www.artigianidelweb.com','_system');">www.artigianidelweb.com</a><br>
 			</p>
+			
 			<h4>Documentation</h4>
 			<p>
-				how to write dice notation
+				This app uses an extended version of the classic <a href="javascript:;" data-ignore="push" onclick="cordova.InAppBrowser.open('https://en.wikipedia.org/wiki/Dice_notation','_system');">dice notation</a>.<br>
+				The basic concept is that "+" keeps and "-" drops.
 			</p>
+			
+			<h5>Classic notation actions</h5>
+			<ul>
+				<li>1d100 = roll one 100-sided dice. You can replace 100 with any number.</li>
+				<li>4d6+H3 = roll four 6-sided dices then keep the highest three. The number after H is optional (default: 1).</li>
+				<li>4d6-L1 = roll four 6-sided dices then drop the lowest. The number after L is optional (default: 1).</li>
+				<li>4k6 = 4d10+H6 = roll four 10-sided dices then keep the highest six.</li>
+				<li>4dF = 4d3-8 = roll four Fudge dices.</li>
+			</ul>
+			
+			<h5>Extended notation actions</h5>
+			<ul>
+				<li>4k6-R1+R10 = 4d10+H6 then drop and reroll the results equalt to 1, then keep and reroll the results equalt to 10 (exploding dices). The number after R is optional (drop default: 1, keep default: 10)</li>
+				<li>10d10+S8 = 10d10 then count the results equalt to or greater than 8 (successes). The number after S is optional (default: 8).</li>
+				<li>10d10-F8 = 10d10 then count the results lower than 8 (failures). The number after F is optional (default: 8).</li>
+			</ul>
+			
+			<h5>Super example</h5>
+			
+			<p>
+			10d10-R10-R9-R8+H10+S+1=1 ;)
+			</p>
+			
+			<h4>To do</h4>
+			<ul>
+				<li>Horizontal layout</li>
+				<li>More Fudge dices</li>
+				<li>Make pharentesis work for actions too</li>
+				<li>Custom dices</li>
+				<li>Unique results (bingo/lottery)</li>
+				<li>Optionally use a different dice notation</li>
+				<li>Save favored formulas</li>
+				<li>Character profiles with stats usable in formulas</li>
+				<li>Online data sync</li>
+			</ul>
+			
 		</div>
 	
 	</div>

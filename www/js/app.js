@@ -77,30 +77,39 @@ myapp.init = function(){
 			});
 		}
 		
-		var disable_phone_keyboard=localStorage.getItem('disable_phone_keyboard');
-		if(disable_phone_keyboard==null){
-			disable_phone_keyboard=true;
-			localStorage.setItem('disable_phone_keyboard',1);
+		var native_keyboard=localStorage.getItem('native_keyboard');
+		if(native_keyboard==null){
+			native_keyboard=true;
+			localStorage.setItem('native_keyboard',1);
 		}else{
-			disable_phone_keyboard=disable_phone_keyboard*1===1;
+			native_keyboard=native_keyboard*1===1;
 		}
-		document.getElementById('formula').readOnly = disable_phone_keyboard;
+		document.getElementById('formula').readOnly = !native_keyboard;
 		
 	}
 	
 	function optionsPageListeners(){
-		
-		var disable_phone_keyboard=localStorage.getItem('disable_phone_keyboard');
-		if(disable_phone_keyboard==null){
-			disable_phone_keyboard=true;
-			localStorage.setItem('disable_phone_keyboard',1);
+		console.log(localStorage.getItem('native_keyboard'));
+		var native_keyboard=localStorage.getItem('native_keyboard');
+		if(native_keyboard==null){
+			native_keyboard=true;
+			localStorage.setItem('native_keyboard',0);
 		}else{
-			disable_phone_keyboard=disable_phone_keyboard*1===1;
+			native_keyboard=native_keyboard*1===1;
 		}
-		
-		if(disable_phone_keyboard)document.getElementById('disable_phone_keyboard').className+=' active';
+		console.log(localStorage.getItem('native_keyboard'));
+		if(native_keyboard)document.getElementById('native_keyboard').className+=' active';
 
 	}
+	
+	document.body.addEventListener('toggle',function(event){
+		var target=event.target;
+		switch(target.id){
+			case'native_keyboard':
+				localStorage.setItem('native_keyboard',event.detail.isActive*1);
+			break;
+		}
+	});
 	
 	window.addEventListener('push',function(){
 		if(document.getElementById('page-options')){
@@ -114,17 +123,9 @@ myapp.init = function(){
 		}
 	});
 	
+	calculatorPageListeners();
 	
-	document.body.addEventListener('toggle',function(event){
-		var target=event.target;
-		switch(target.id){
-			case'disable_phone_keyboard':
-				localStorage.setItem('disable_phone_keyboard',event.detail.isActive*1);
-			break;
-		}
-	});
-	
-	PUSH({url:'calculator.html'});
+	//PUSH({url:'calculator.html'});
 }
 
 function keyboardButton(){
