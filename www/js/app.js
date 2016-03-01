@@ -55,6 +55,7 @@ document.addEventListener("app.Ready", onAppReady, false) ;
 myapp.init = function(){
 	
 	function calculatorPageListeners(){
+		
 		var kb=document.querySelectorAll('.character');
 		for(var i=0;i<kb.length;i++){
 			var c=kb[i];
@@ -80,7 +81,7 @@ myapp.init = function(){
 		var native_keyboard=localStorage.getItem('native_keyboard');
 		if(native_keyboard==null){
 			native_keyboard=true;
-			localStorage.setItem('native_keyboard',1);
+			localStorage.setItem('native_keyboard',0);
 		}else{
 			native_keyboard=native_keyboard*1===1;
 		}
@@ -113,15 +114,13 @@ myapp.init = function(){
 	
 	window.addEventListener('push',function(){
 		if(document.getElementById('page-options')){
-			
 			optionsPageListeners();
-			
 		}else if(document.getElementById('page-calculator')){
-			
 			calculatorPageListeners();
-
 		}
 	});
+	
+	document.addEventListener("backbutton", onBackButton, false);
 	
 	calculatorPageListeners();
 	
@@ -159,3 +158,37 @@ function keyboardButton(){
 	}
 	el.focus();
 }
+
+function onBackButton(e){
+	var page=document.getElementsByTagName('h1')[0].id.split('-')[1];
+	if(page=='menu') {
+		history.back();
+	}else if([
+		'options',
+		'info'
+	].indexOf(page)!=-1){
+		PUSH({url:'index.html'});
+	}else{
+		exitAppPopup();
+	};
+}
+
+function exitAppPopup() {
+	navigator.notification.confirm(
+		"Do you really want to close this app?", 
+		function(buttonIndex){
+			ConfirmExit(buttonIndex);
+		}, 
+		"Confirmation", 
+		"Yes,No"
+	); 
+	//return false;
+};
+
+function ConfirmExit(stat){
+	if(stat == "1"){
+		navigator.app.exitApp();
+	}else{
+		return;
+	};
+};

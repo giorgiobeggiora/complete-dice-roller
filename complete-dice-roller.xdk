@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "jsapp/template-blank-cordova-project-lite/sample.zip",
       "projectGuid": "955de004-cf80-427d-85a4-3d5e0cceea91",
-      "lastModifiedDate": 1456711378766,
+      "lastModifiedDate": 1456807487049,
       "creationDate": 1451923656421
     },
     "XDK-app-designer": "false",
@@ -72,16 +72,54 @@
         "cordovaVersion": ">=3.1.0"
       },
       {
+        "id": "cordova-plugin-inappbrowser",
+        "name": "InAppBrowser",
+        "version": "1.1.0",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-inappbrowser",
+        "gitref": "",
+        "paramvals": {},
+        "sourceLocation": "plugins/cordova-plugin-inappbrowser",
+        "selectedState": "Included",
+        "checksum": "20096ffc",
+        "dependsOn": [],
+        "topLevel": true,
+        "cordovaVersion": ">=3.1.0",
+        "permissions": {},
+        "description": "Cordova InAppBrowser Plugin",
+        "data": {},
+        "dependedBy": []
+      },
+      {
+        "id": "cordova-plugin-dialogs",
+        "name": "Notification",
+        "version": "1.2.0",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-dialogs",
+        "gitref": "",
+        "paramvals": {},
+        "sourceLocation": "plugins/cordova-plugin-dialogs",
+        "selectedState": "Included",
+        "checksum": "1af74557",
+        "dependsOn": [],
+        "topLevel": true,
+        "cordovaVersion": ">=3.0",
+        "permissions": {},
+        "description": "Cordova Notification Plugin",
+        "data": {},
+        "dependedBy": []
+      },
+      {
         "id": "cordova-plugin-admobpro",
         "name": "AdMob Plugin Pro",
-        "version": "2.11.1",
+        "version": "2.12.0",
         "originType": "cordova.io",
         "origin": "cordova-plugin-admobpro",
         "gitref": "",
         "paramvals": {},
         "sourceLocation": "plugins/cordova-plugin-admobpro",
         "selectedState": "Included",
-        "checksum": "9798e74e",
+        "checksum": "83138755",
         "dependsOn": [
           "cordova-plugin-extension"
         ],
@@ -121,25 +159,6 @@
           "cordova-plugin-admobpro"
         ],
         "custom": "true"
-      },
-      {
-        "id": "cordova-plugin-inappbrowser",
-        "name": "InAppBrowser",
-        "version": "1.1.0",
-        "originType": "cordova.io",
-        "origin": "cordova-plugin-inappbrowser",
-        "gitref": "",
-        "paramvals": {},
-        "sourceLocation": "plugins/cordova-plugin-inappbrowser",
-        "selectedState": "Included",
-        "checksum": "20096ffc",
-        "dependsOn": [],
-        "topLevel": true,
-        "cordovaVersion": ">=3.1.0",
-        "permissions": {},
-        "description": "Cordova InAppBrowser Plugin",
-        "data": {},
-        "dependedBy": []
       }
     ],
     "buildConfigurations": {
