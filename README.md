@@ -24,6 +24,7 @@ Coming soon:
 - Horizontal layout
 - Make pharentesis work for actions too
 - More dices: d% F.1 F.2 F.3
+- Round, Floor, Ceil
 - Custom dices
 - Roll history
 - Save favored formulas and name them
