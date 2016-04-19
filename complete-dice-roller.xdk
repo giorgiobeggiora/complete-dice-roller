@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "jsapp/template-blank-cordova-project-lite/sample.zip",
       "projectGuid": "955de004-cf80-427d-85a4-3d5e0cceea91",
-      "lastModifiedDate": 1456807487049,
+      "lastModifiedDate": 1461022459325,
       "creationDate": 1451923656421
     },
     "XDK-app-designer": "false",
@@ -205,7 +205,7 @@
           "Orientation": "portrait"
         },
         "isActive_": true,
-        "appName_": "Complete dice roller",
+        "appName_": "Complete Dice Roller",
         "appID_": "it.effettoapp.completediceroller",
         "appAccess_": {
           "mode": "legacy",
@@ -217,25 +217,25 @@
         },
         "icons_": [
           {
-            "relPath": "images/icons/36.png",
+            "relPath": "images/icons/Icon-ldpi.png",
             "density": "ldpi",
             "height": 36,
             "width": 36
           },
           {
-            "relPath": "images/icons/48.png",
+            "relPath": "images/icons/Icon-mdpi.png",
             "density": "mdpi",
             "height": 48,
             "width": 48
           },
           {
-            "relPath": "images/icons/72.png",
+            "relPath": "images/icons/Icon-hdpi.png",
             "density": "hdpi",
             "height": 72,
             "width": 72
           },
           {
-            "relPath": "images/icons/96.png",
+            "relPath": "images/icons/Icon-xhdpi.png",
             "density": "xhdpi",
             "height": 96,
             "width": 96
@@ -304,7 +304,7 @@
         "cordovaCLIVersion_": "5.1.1",
         "crosswalkVersion_": "14",
         "appVersion_": "0.1.0",
-        "appDescription_": "Dice roller with extended features",
+        "appDescription_": "Dice roller with extended notation and features",
         "appAuthor_": "Artigiani del Web",
         "appVersionCode_": "1"
       },
@@ -317,8 +317,8 @@
           "ios-configuration": "adhoc"
         },
         "isActive_": true,
-        "appName_": "complete-dice-roller",
-        "appID_": "xdk.intel.cordova.template.lite",
+        "appName_": "Complete Dice Roller",
+        "appID_": "it.effettoapp.completediceroller",
         "appAccess_": {
           "mode": "legacy",
           "network": [
@@ -327,16 +327,164 @@
           "intents": [],
           "navigation": []
         },
-        "icons_": [],
-        "splashes_": [],
+        "icons_": [
+          {
+            "relPath": "images/icons/Icon-Small.png",
+            "height": 29,
+            "width": 29
+          },
+          {
+            "relPath": "images/icons/Icon-Small@2x.png",
+            "height": 58,
+            "width": 58
+          },
+          {
+            "relPath": "images/icons/Icon-Small@3x.png",
+            "height": 87,
+            "width": 87
+          },
+          {
+            "relPath": "images/icons/Icon-60.png",
+            "height": 60,
+            "width": 60
+          },
+          {
+            "relPath": "images/icons/Icon-60@2x.png",
+            "height": 120,
+            "width": 120
+          },
+          {
+            "relPath": "images/icons/Icon-60@3x.png",
+            "height": 180,
+            "width": 180
+          },
+          {
+            "relPath": "images/icons/Icon-76.png",
+            "height": 76,
+            "width": 76
+          },
+          {
+            "relPath": "images/icons/Icon-76@2x.png",
+            "height": 152,
+            "width": 152
+          },
+          {
+            "relPath": "images/icons/Icon-40.png",
+            "height": 40,
+            "width": 40
+          },
+          {
+            "relPath": "images/icons/Icon-40@2x.png",
+            "height": 80,
+            "width": 80
+          },
+          {
+            "relPath": "images/icons/Icon.png",
+            "height": 57,
+            "width": 57
+          },
+          {
+            "relPath": "images/icons/Icon@2x.png",
+            "height": 114,
+            "width": 114
+          },
+          {
+            "relPath": "images/icons/Icon-72.png",
+            "height": 72,
+            "width": 72
+          },
+          {
+            "relPath": "images/icons/Icon-72@2x.png",
+            "height": 144,
+            "width": 144
+          },
+          {
+            "relPath": "images/icons/Icon-Small-50.png",
+            "height": 50,
+            "width": 50
+          },
+          {
+            "relPath": "images/icons/Icon-Small-50@2x.png",
+            "height": 100,
+            "width": 100
+          }
+        ],
+        "splashes_": [
+          {
+            "relPath": "images/splashscreen/ios/750x1334.png",
+            "height": 1334,
+            "width": 750,
+            "orientation": "portrait"
+          },
+          {
+            "relPath": "images/splashscreen/ios/1242x2208.png",
+            "height": 2208,
+            "width": 1242,
+            "orientation": "portrait"
+          },
+          {
+            "relPath": "images/splashscreen/ios/640x1136.png",
+            "height": 1136,
+            "width": 640,
+            "orientation": "portrait"
+          },
+          {
+            "relPath": "images/splashscreen/ios/640x960.png",
+            "height": 960,
+            "width": 640,
+            "orientation": "portrait"
+          },
+          {
+            "relPath": "images/splashscreen/ios/320x480.png",
+            "height": 480,
+            "width": 320,
+            "orientation": "portrait"
+          },
+          {
+            "relPath": "images/splashscreen/ios/1536x2048.png",
+            "height": 2048,
+            "width": 1536,
+            "orientation": "portrait"
+          },
+          {
+            "relPath": "images/splashscreen/ios/768x1024.png",
+            "height": 1024,
+            "width": 768,
+            "orientation": "portrait"
+          },
+          {
+            "relPath": "images/splashscreen/ios/1334x750.png",
+            "height": 750,
+            "width": 1334,
+            "orientation": "landscape"
+          },
+          {
+            "relPath": "images/splashscreen/ios/2208x1242.png",
+            "height": 1242,
+            "width": 2208,
+            "orientation": "landscape"
+          },
+          {
+            "relPath": "images/splashscreen/ios/2048x1536.png",
+            "height": 1536,
+            "width": 2048,
+            "orientation": "landscape"
+          },
+          {
+            "relPath": "images/splashscreen/ios/1024x768.png",
+            "height": 768,
+            "width": 1024,
+            "orientation": "landscape"
+          }
+        ],
         "addlPermissions_": "",
         "excludedLibraries_": "",
         "iosProvs_": [],
         "cordovaCLIVersion_": "5.1.1",
-        "appAuthor_": "Intel XDK",
+        "appAuthor_": "Artigiani del Web",
         "crosswalkVersion_": "14",
-        "appVersion_": "0.0.1",
-        "appDescription_": "Universal init code for Intel XDK and Cordova device ready detection, as well as within browser."
+        "appVersion_": "0.1.0",
+        "appDescription_": "Dice roller with extended notation and features"
       },
       "Windows8": {
         "platform_": "windows8",

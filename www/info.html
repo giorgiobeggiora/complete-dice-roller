@@ -44,18 +44,18 @@
 			
 			<h5>Classic notation actions</h5>
 			<ul>
-				<li>1d100 = roll one 100-sided dice. You can replace 100 with any number.</li>
+				<li>1d100 = roll one 100-sided dice. You can replace 1 and 100 with any integer greater than zero.</li>
 				<li>4d6+H3 = roll four 6-sided dices then keep the highest three. The number after H is optional (default: 1).</li>
 				<li>4d6-L1 = roll four 6-sided dices then drop the lowest. The number after L is optional (default: 1).</li>
-				<li>4k6 = 4d10+H6 = roll four 10-sided dices then keep the highest six.</li>
+				<li>6k4 = 6d10+H4 = roll six 10-sided dices then keep the highest four.</li>
 				<li>4dF = 4d3-8 = roll four Fudge dices.</li>
 			</ul>
 			
 			<h5>Extended notation actions</h5>
 			<ul>
-				<li>4k6-R1+R10 = 4d10+H6 then drop and reroll the results equalt to 1, then keep and reroll the results equalt to 10 (exploding dices). The number after R is optional (drop default: 1, keep default: 10)</li>
-				<li>10d10+S8 = 10d10 then count the results equalt to or greater than 8 (successes). The number after S is optional (default: 8).</li>
-				<li>10d10-F8 = 10d10 then count the results lower than 8 (failures). The number after F is optional (default: 8).</li>
+				<li>4k6-R1+R10 = 4d10+H6 then drop and reroll the results equalt to 1, then keep and reroll the results equalt to 10 (exploding dices). The number after R is optional ("-R" default: 1, "+R" default: 10)</li>
+				<li>10d10+S8 = roll 10 10-sided dices then count the results equalt to or greater than 8 (successes). The number after S is optional (default: 8).</li>
+				<li>10d10-F8 = roll 10 10-sided dices then count the results lower than 8 (failures). The number after F is optional (default: 8).</li>
 			</ul>
 			
 			<h5>Super example</h5>
@@ -70,11 +70,12 @@
 				<li>Make pharentesis work for actions too</li>
 				<li>More dices: d% F.1 F.2 F.3</li>
 				<li>Round, Floor, Ceil</li>
+				<li>True random</li>
 				<li>Custom dices</li>
 				<li>Roll history</li>
 				<li>Save favored formulas and name them</li>
 				<li>Nested formulas (use favored formulas' name as element of a formula)</li>
-				<li>Macros ("if" instruction to execute different formulas depending on the result of other formulas)</li>
+				<li>Macros with "if" (instruction to execute different formulas depending on the result of other formulas) and possibility to check against one or some numbers</li>
 				<li>Character profiles with custom stats usable as element of a formulas</li>
 				<li>Online data sync</li>
 				<li>Unique results (lottery style)</li>

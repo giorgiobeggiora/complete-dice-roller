@@ -216,20 +216,24 @@ function sufa_calc(f,m){
 		var count=0;
 		if(letter=='S'){
 			if(sign=='+'){
+				// +Sx returns >= x
 				while(l--){
 					if(rolled[l]>=v)count++;
 				}
 			}else{
+				// -Sx returns < x
 				while(l--){
 					if(rolled[l]<v)count++;
 				}
 			}
 		}else{
 			if(sign=='+'){
+				// +Fx returns <= x
 				while(l--){
 					if(rolled[l]<=v)count++;
 				}
 			}else{
+				// -Fx returns > x
 				while(l--){
 					if(rolled[l]>v)count++;
 				}
