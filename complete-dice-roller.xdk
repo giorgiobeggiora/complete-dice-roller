@@ -1,17 +1,25 @@
 {
   "project": {
-    "projectSettingsVersion": "2.0.0",
+    "projectSettingsVersion": "3.0.0",
     "creationData": {
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "jsapp/template-blank-cordova-project-lite/sample.zip",
       "projectGuid": "955de004-cf80-427d-85a4-3d5e0cceea91",
-      "lastModifiedDate": 1461022459325,
+      "lastModifiedDate": 1461886483434,
       "creationDate": 1451923656421
     },
     "XDK-app-designer": "false",
     "sourceDirectory": "www",
     "startFile": "index.html",
-    "projectFiles": {},
+    "projectFiles": {
+      "xdk-publish-meta-data.json": {
+        "settings": {
+          "project": {
+            "XDK-not-deployed": "True"
+          }
+        }
+      }
+    },
     "projectDirectories": {},
     "libraries": [],
     "serviceMethods": [],
@@ -162,38 +170,6 @@
       }
     ],
     "buildConfigurations": {
-      "Android-Crosswalk": {
-        "platform_": "android",
-        "runtime_": "Crosswalk with Cordova 3.x",
-        "name_": "Android-Crosswalk",
-        "preferences_": {
-          "android-minSdkVersion": "14",
-          "android-targetSdkVersion": "19",
-          "android-installLocation": "auto",
-          "Orientation": "portrait"
-        },
-        "isActive_": true,
-        "appName_": "Complete dice roller",
-        "appID_": "it.effettoapp.completediceroller",
-        "appAccess_": {
-          "mode": "legacy",
-          "network": [
-            "*"
-          ],
-          "intents": [],
-          "navigation": []
-        },
-        "icons_": [],
-        "splashes_": [],
-        "addlPermissions_": "",
-        "excludedLibraries_": "",
-        "cordovaCLIVersion_": "5.1.1",
-        "crosswalkVersion_": "15",
-        "appVersion_": "0.1.0",
-        "appDescription_": "Dice roller with extended features",
-        "appAuthor_": "Artigiani del Web",
-        "appVersionCode_": "1"
-      },
       "Android": {
         "platform_": "android",
         "runtime_": "Cordova 3.x",
@@ -301,31 +277,33 @@
         ],
         "addlPermissions_": "",
         "excludedLibraries_": "",
+        "certificateId_": "sQJLR7a_gUWuJI2RVUUPwA2",
         "cordovaCLIVersion_": "5.1.1",
-        "crosswalkVersion_": "14",
-        "appVersion_": "0.1.0",
+        "appVersion_": "0.1.1",
         "appDescription_": "Dice roller with extended notation and features",
         "appAuthor_": "Artigiani del Web",
-        "appVersionCode_": "1"
+        "appVersionCode_": "2",
+        "crosswalkVersion_": "16"
       },
       "iOS": {
         "platform_": "ios",
         "runtime_": "Cordova 3.x",
         "name_": "iOS",
         "preferences_": {
-          "ios-target": "6",
-          "ios-configuration": "adhoc"
+          "ios-configuration": "adhoc",
+          "deployment-target": "6"
         },
         "isActive_": true,
         "appName_": "Complete Dice Roller",
         "appID_": "it.effettoapp.completediceroller",
         "appAccess_": {
-          "mode": "legacy",
+          "mode": "whitelist",
           "network": [
             "*"
           ],
           "intents": [],
-          "navigation": []
+          "navigation": [],
+          "properties": {}
         },
         "icons_": [
           {
@@ -479,11 +457,21 @@
         ],
         "addlPermissions_": "",
         "excludedLibraries_": "",
-        "iosProvs_": [],
+        "certificateId_": "",
+        "iosProvs_": [
+          {
+            "relPath": "completediceroller_adhoc.mobileprovision",
+            "type": "adhoc"
+          },
+          {
+            "relPath": "completediceroller_appstore.mobileprovision",
+            "type": "production"
+          }
+        ],
         "cordovaCLIVersion_": "5.1.1",
         "appAuthor_": "Artigiani del Web",
         "crosswalkVersion_": "14",
-        "appVersion_": "0.1.0",
+        "appVersion_": "0.1.1",
         "appDescription_": "Dice roller with extended notation and features"
       },
       "Windows8": {
@@ -498,17 +486,19 @@
         "appName_": "complete-dice-roller",
         "appID_": "xdk.intel.cordova.template.lite",
         "appAccess_": {
-          "mode": "legacy",
+          "mode": "whitelist",
           "network": [
             "*"
           ],
           "intents": [],
-          "navigation": []
+          "navigation": [],
+          "properties": {}
         },
         "icons_": [],
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
+        "certificateId_": "",
         "cordovaCLIVersion_": "5.1.1",
         "crosswalkVersion_": "14",
         "appAuthor_": "Intel XDK",
@@ -535,6 +525,7 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
+        "certificateId_": "",
         "appAuthor_": "Intel XDK",
         "appVersion_": "0.0.1",
         "appDescription_": "Universal init code for Intel XDK and Cordova device ready detection, as well as within browser."
@@ -559,6 +550,7 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
+        "certificateId_": "",
         "appAuthor_": "Intel XDK",
         "appVersion_": "0.0.1",
         "appDescription_": "Universal init code for Intel XDK and Cordova device ready detection, as well as within browser."
@@ -583,6 +575,7 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
+        "certificateId_": "",
         "appAuthor_": "Intel XDK",
         "appVersion_": "0.0.1",
         "appDescription_": "Universal init code for Intel XDK and Cordova device ready detection, as well as within browser."
@@ -607,6 +600,7 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
+        "certificateId_": "",
         "appAuthor_": "Intel XDK",
         "appVersion_": "0.0.1",
         "appDescription_": "Universal init code for Intel XDK and Cordova device ready detection, as well as within browser."
@@ -629,6 +623,7 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
+        "certificateId_": "",
         "appVersion_": "0.0.0.1",
         "cordovaCLIVersion_": "5.1.1",
         "appAuthor_": "Intel XDK"

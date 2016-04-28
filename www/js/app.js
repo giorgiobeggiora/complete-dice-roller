@@ -79,26 +79,28 @@ myapp.init = function(){
 		}
 		
 		var native_keyboard=localStorage.getItem('native_keyboard');
+        console.log('A',localStorage.getItem('native_keyboard'));
 		if(native_keyboard==null){
-			native_keyboard=true;
+			native_keyboard=false;
 			localStorage.setItem('native_keyboard',0);
 		}else{
 			native_keyboard=native_keyboard*1===1;
 		}
+		console.log('B',localStorage.getItem('native_keyboard'),!native_keyboard);
 		document.getElementById('formula').readOnly = !native_keyboard;
 		
 	}
 	
 	function optionsPageListeners(){
-		console.log(localStorage.getItem('native_keyboard'));
+		console.log('C',localStorage.getItem('native_keyboard'));
 		var native_keyboard=localStorage.getItem('native_keyboard');
 		if(native_keyboard==null){
-			native_keyboard=true;
+			native_keyboard=false;
 			localStorage.setItem('native_keyboard',0);
 		}else{
 			native_keyboard=native_keyboard*1===1;
 		}
-		console.log(localStorage.getItem('native_keyboard'));
+		console.log('D',localStorage.getItem('native_keyboard'));
 		if(native_keyboard)document.getElementById('native_keyboard').className+=' active';
 
 	}
