@@ -79,31 +79,43 @@ myapp.init = function(){
 		}
 		
 		var native_keyboard=localStorage.getItem('native_keyboard');
-        console.log('A',localStorage.getItem('native_keyboard'));
+        
 		if(native_keyboard==null){
 			native_keyboard=false;
 			localStorage.setItem('native_keyboard',0);
 		}else{
 			native_keyboard=native_keyboard*1===1;
 		}
-		console.log('B',localStorage.getItem('native_keyboard'),!native_keyboard);
-		document.getElementById('formula').readOnly = !native_keyboard;
+		
+        document.getElementById('formula').readOnly = !native_keyboard;
 		
 	}
 	
 	function optionsPageListeners(){
-		console.log('C',localStorage.getItem('native_keyboard'));
-		var native_keyboard=localStorage.getItem('native_keyboard');
+		
+        var native_keyboard=localStorage.getItem('native_keyboard');
 		if(native_keyboard==null){
 			native_keyboard=false;
 			localStorage.setItem('native_keyboard',0);
 		}else{
 			native_keyboard=native_keyboard*1===1;
 		}
-		console.log('D',localStorage.getItem('native_keyboard'));
-		if(native_keyboard)document.getElementById('native_keyboard').className+=' active';
+		
+        if(native_keyboard)document.getElementById('native_keyboard').className+=' active';
 
 	}
+    
+    function infoPageListeners(){
+        
+        cordova.getAppVersion.getVersionNumber(function (version) {
+            document.getElementById('app-version').innerHTML=version;
+        });
+        
+        cordova.getAppVersion.getVersionCode(function (version) {
+            document.getElementById('app-build').innerHTML=version;
+        });
+        
+    }
 	
 	document.body.addEventListener('toggle',function(event){
 		var target=event.target;
@@ -117,6 +129,8 @@ myapp.init = function(){
 	window.addEventListener('push',function(){
 		if(document.getElementById('page-options')){
 			optionsPageListeners();
+		}else if(document.getElementById('page-info')){
+			infoPageListeners();
 		}else if(document.getElementById('page-calculator')){
 			calculatorPageListeners();
 		}

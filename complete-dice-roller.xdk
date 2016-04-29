@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "jsapp/template-blank-cordova-project-lite/sample.zip",
       "projectGuid": "955de004-cf80-427d-85a4-3d5e0cceea91",
-      "lastModifiedDate": 1461886483434,
+      "lastModifiedDate": 1461900092396,
       "creationDate": 1451923656421
     },
     "XDK-app-designer": "false",
@@ -59,7 +59,7 @@
         "name": "Device",
         "description": "Cordova Device Plugin",
         "checksum": "1eae5d64",
-        "cordovaVersion": ">=3.0"
+        "cordovaVersion": ">=3.0.0"
       },
       {
         "id": "cordova-plugin-splashscreen",
@@ -111,7 +111,7 @@
         "checksum": "1af74557",
         "dependsOn": [],
         "topLevel": true,
-        "cordovaVersion": ">=3.0",
+        "cordovaVersion": ">=3.0.0",
         "permissions": {},
         "description": "Cordova Notification Plugin",
         "data": {},
@@ -167,6 +167,25 @@
           "cordova-plugin-admobpro"
         ],
         "custom": "true"
+      },
+      {
+        "id": "cordova-plugin-app-version",
+        "name": "AppVersion",
+        "version": "0.1.8",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-app-version",
+        "gitref": "",
+        "paramvals": {},
+        "sourceLocation": "plugins/cordova-plugin-app-version",
+        "selectedState": "Included",
+        "checksum": "be5c8cf9",
+        "dependsOn": [],
+        "topLevel": true,
+        "cordovaVersion": ">=3.0.0",
+        "permissions": {},
+        "description": "\n        This plugin will return the version of your App that you have set in\n        packaging it. I.e. it will always match the version in the app store.\n    ",
+        "data": {},
+        "dependedBy": []
       }
     ],
     "buildConfigurations": {
@@ -279,10 +298,10 @@
         "excludedLibraries_": "",
         "certificateId_": "sQJLR7a_gUWuJI2RVUUPwA2",
         "cordovaCLIVersion_": "5.1.1",
-        "appVersion_": "0.1.1",
+        "appVersion_": "0.1.2",
         "appDescription_": "Dice roller with extended notation and features",
         "appAuthor_": "Artigiani del Web",
-        "appVersionCode_": "2",
+        "appVersionCode_": "3",
         "crosswalkVersion_": "16"
       },
       "iOS": {
